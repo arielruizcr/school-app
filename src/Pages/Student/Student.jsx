@@ -39,13 +39,13 @@ const Student = () => {
       id: studentId
     }
     if (student.id) {
-      editCourse(student);
+      editStudent(student);
     } else {
       saveStudent(student);
     }
   }
 
-  const editCourse = async (student) => {
+  const editStudent = async (student) => {
     try {
       await studentService.update(student);
       navigate('/students');
@@ -99,8 +99,8 @@ const Student = () => {
               message: 'Please input the last name!',
             },
             {
-              max: 60,
-              message: 'Name must be maximum 60 characters.'
+              max: 5,
+              message: 'Name must be maximum 5 characters.'
             },
           ]}
         >
@@ -116,8 +116,9 @@ const Student = () => {
               message: 'Please input the email!',
             },
             {
-              type: 'email',
-            },
+              pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+              message: 'Please enter a valid email',
+            }
           ]}
         >
           <Input />
