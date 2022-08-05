@@ -22,7 +22,11 @@ const getAll = () => axios.get(baseUrl)
  * Makes a HTTP request to update an student.
  * @returns promise result.
  */
-const update = (data) => axios.put(baseUrl, data)
+const update = (data) => {
+    const url = `${baseUrl}/${data.id}`
+    return axios.put(url, data);
+}
+
 
 /**
  * Makes a HTTP request to delete an student.
